@@ -15,6 +15,7 @@
             .app-body button { background-color: #FF9900; font-size: 14px; color: white; text-transform: uppercase; padding: 1em; border: none; }
             .app-body button:hover { opacity: 0.8; }
         </style>
+        <script src="main.bundle.js"></script>
     </head>
     <body>
         <div class="app">
@@ -22,30 +23,14 @@
                 <div class="app-logo">
                     <img src="https://aws-amplify.github.io/images/Logos/Amplify-Logo-White.svg" alt="AWS Amplify" />
                 </div>
-                <h1>Welcome to the Amplify Framework</h1>
             </div>
             <div class="app-body">
-                <button id="MutationEventButton">Add data</button>
-                <div id="MutationResult"></div>
-                <div id="QueryResult"></div>
-                <div id="SubscriptionResult"></div>
-                <button data-amplify-analytics-on='click' data-amplify-analytics-name='click' data-amplify-analytics-attrs='attr1:attr1_value,attr2:attr2_value'/>
-                <script>
-                    var sendEvent = function() {
-                        Analytics.record({
-                            name: 'click',
-                            attributes: {
-                                attr: 'attr', // the default ones
-                                attr1: attr1_value, // defined in the button component
-                                attr2: attr2_value, // defined in the button component
-                            }
-                        });
-                    }
-                </script>
-                <button onclick="sendEvent()"/>
+                <video width="400"><source src="http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4" type="video/mp4"></video>
+                <button data-amplify-analytics-on='click' data-amplify-analytics-name='VideoOnDemandButton' data-amplify-analytics-attrs='device:browser,event:play,media:VoD Lidio Ramalho,device:app_mobile,videotime:40,userid:12'>Play</button>
+                <button data-amplify-analytics-on='click' data-amplify-analytics-name='VideoOnDemandButton' data-amplify-analytics-attrs='device:browser,event:stop,media:VoD Lidio Ramalho,device:app_mobile,videotime:40,userid:12'>Stop</button>
             </div>
         </div>
         
-        <script src="main.bundle.js"></script>
+       
     </body>
 </html>
