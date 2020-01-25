@@ -1,18 +1,24 @@
 import Analytics from '@aws-amplify/analytics';
 import Auth from '@aws-amplify/auth';
 
+
 const amplifyConfig = {
   Auth: {
-    identityPoolId: 'us-east-1:84342297-9dad-40dc-b98e-f57f5ee4e739',
+    identityPoolId: 'us-east-1:443c44b1-f369-4d6e-94ce-4b83bc4d7fb2',
     region: 'us-east-1'
   }
 }
 //Initialize Amplify
 Auth.configure(amplifyConfig);
 
+
 const analyticsConfig = {
   AWSPinpoint: {
-        mandatorySignIn: false,
+    // Amazon Pinpoint App Client ID
+    appId: '7a88a3e232e74d66ac2fe37e283f3f87',
+    // Amazon service region
+    region: 'us-east-1',
+    mandatorySignIn: false
   }
 }
 
@@ -20,5 +26,5 @@ Analytics.configure(analyticsConfig)
 
 Analytics.record({
     name: 'VideoOnDemand',
-    attributes: { device = 'browser', event: 'play', media: 'VoD Lidio Ramalho', device ='app_mobile', videotime = '40', userid='12'}
+    attributes: { device: 'browser', event: 'play', media: 'VoD Lidio Ramalho', device: 'app_mobile', videotime: '40', userid: '12'}
 });

@@ -1,20 +1,14 @@
 {
-	"api": {
-		"amplifyjapp": {
-			"service": "AppSync",
-			"providerPlugin": "awscloudformation",
-			"output": {
-				"authConfig": {
-					"additionalAuthenticationProviders": [],
-					"defaultAuthentication": {
-						"authenticationType": "API_KEY",
-						"apiKeyConfig": {
-							"description": "cacho",
-							"apiKeyExpirationDays": "20"
-						}
-					}
-				}
-			}
+	"auth": {
+		"cognitobad56c5b": {
+			"service": "Cognito",
+			"providerPlugin": "awscloudformation"
+		}
+	},
+	"analytics": {
+		"analytics": {
+			"service": "Pinpoint",
+			"providerPlugin": "awscloudformation"
 		}
 	},
 	"hosting": {
