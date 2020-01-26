@@ -24,12 +24,6 @@ const analyticsConfig = {
 
 Analytics.configure(analyticsConfig)
 
-Analytics.autoTrack('event', {
-  enable: true,
-  selectorPrefix: 'data-amplify-analytics-',
-  provider: 'AWSPinpoint'
-});
-
 const AnalyticsPlayButton = document.getElementById('AnalyticsPlayButton');
 const AnalyticsStopButton = document.getElementById('AnalyticsStopButton');
 AnalyticsPlayButton.addEventListener('click', (evt) => {
