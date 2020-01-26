@@ -27,10 +27,10 @@ Analytics.configure(analyticsConfig)
 const AnalyticsPlayButton = document.getElementById('AnalyticsPlayButton');
 const AnalyticsStopButton = document.getElementById('AnalyticsStopButton');
 AnalyticsPlayButton.addEventListener('click', (evt) => {
-    Analytics.record({
-      name: 'VideoOnDemand',
-      attributes: { device : 'browser', event: 'play', media: 'VoD Lidio Ramalho', device : 'app_mobile', videotime : '40', userid : '12'}   
-    }); 
+  Analytics.record({
+    name: 'VideoOnDemand',
+    attributes: { device : 'browser', event: 'play', media: 'VoD Lidio Ramalho', device : 'app_mobile', videotime : '40', userid : '12'}   
+  }); 
 });
 
 AnalyticsStopButton.addEventListener('click', (evt) => {
