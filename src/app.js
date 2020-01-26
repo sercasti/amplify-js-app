@@ -25,26 +25,23 @@ const analyticsConfig = {
 Analytics.configure(analyticsConfig)
 
 Analytics.autoTrack('event', {
-  // REQUIRED, turn on/off the auto tracking
   enable: true,
-  // OPTIONAL, events you want to track, by default is 'click'
-  events: ['click'],
-  // OPTIONAL, the prefix of the selectors, by default is 'data-amplify-analytics-'
-  // in order to avoid collision with the user agent, according to https://www.w3schools.com/tags/att_global_data.asp
-  // always put 'data' as the first prefix
   selectorPrefix: 'data-amplify-analytics-',
-  // OPTIONAL, the service provider, by default is the AWS Pinpoint
-  provider: 'AWSPinpoint',
-  // OPTIONAL, the default attributes of the event, you can either pass an object or a function 
-  // which allows you to define dynamic attributes
-  attributes: {
-      attr: 'attr'
-  }
-  // when using function
-  // attributes: () => {
-  //    const attr = somewhere();
-  //    return {
-  //        myAttr: attr
-  //    }
-  // }
+  provider: 'AWSPinpoint'
+});
+
+const AnalyticsPlayButton = document.getElementById('AnalyticsPlayButton');
+const AnalyticsStopButton = document.getElementById('AnalyticsStopButton');
+AnalyticsPlayButton.addEventListener('click', (evt) => {
+    Analytics.record({
+      name: 'VideoOnDemand',
+      attributes: { device : 'browser', event: 'play', media: 'VoD Lidio Ramalho', device : 'app_mobile', videotime : '40', userid : '12'}   
+    }); 
+});
+
+AnalyticsStopButton.addEventListener('click', (evt) => {
+  Analytics.record({
+    name: 'VideoOnDemand',
+    attributes: { device : 'browser', event: 'stop', media: 'VoD Lidio Ramalho', device : 'app_mobile', videotime : '40', userid : '12'}   
+  }); 
 });
