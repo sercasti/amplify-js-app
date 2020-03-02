@@ -1,28 +1,23 @@
-import Analytics from '@aws-amplify/analytics';
-import Auth from '@aws-amplify/auth';
+import Amplify from 'aws-amplify';
 
-
-const amplifyConfig = {
+Amplify.configure({
+  // To get the AWS Credentials, you need to configure 
+  // the Auth module with your Cognito Federated Identity Pool
   Auth: {
     identityPoolId: 'us-east-1:443c44b1-f369-4d6e-94ce-4b83bc4d7fb2',
     region: 'us-east-1'
+  },
+  Analytics: {
+    autoSessionRecord: false,
+    AWSPinpoint: {
+      // Amazon Pinpoint App Client ID
+      appId: '7a88a3e232e74d66ac2fe37e283f3f87',
+      // Amazon service region
+      region: 'us-east-1',
+      mandatorySignIn: false
+    }
   }
-}
-//Initialize Amplify
-Auth.configure(amplifyConfig);
-
-
-const analyticsConfig = {
-  AWSPinpoint: {
-    // Amazon Pinpoint App Client ID
-    appId: '7a88a3e232e74d66ac2fe37e283f3f87',
-    // Amazon service region
-    region: 'us-east-1',
-    mandatorySignIn: false
-  }
-}
-
-Analytics.configure(analyticsConfig)
+});
 
 const AnalyticsPlayButton1 = document.getElementById('AnalyticsPlayButton1');
 const AnalyticsStopButton1 = document.getElementById('AnalyticsStopButton1');
