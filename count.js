@@ -1,17 +1,31 @@
-var totalValues = [19, 26, 55];
-var videoLabels = ['VoD Werner Vogels', 'VoD Marcello Zillo', 'VoD Andy Jazzy'];
+function buildCount(inputData){
+    var results = inputData.totalResults.results;
 
-var data = [{
-    values: totalValues,
-    labels: videoLabels,
-    type: 'pie'
-}];
-  
-var layout = {
-    title: 'Videos Total Views %'
-};
-  
-Plotly.newPlot('count', data, layout, {staticPlot: true});
+    var videoLabels = [];
+    var totalValues = [];
 
+    for(i = 0; i < results.length; i++){
+        var result = results[i];
+        var videoName = Object.keys(result)[0];
+        videoLabels.push(videoName);
+        var events = result[videoName];
+        for(j = 0; j < events.length; j++){
+            var event = events[j];
+            if(event.eventName === "play"){
+                totalValues.push(event.count);
+            }
+        }
+    }
 
-  
+    var data = [{
+        values: totalValues,
+        labels: videoLabels,
+        type: 'pie'
+    }];
+    
+    var layout = {
+        title: 'Videos Total Views %'
+    };
+    
+    Plotly.newPlot('count', data, layout, {displayModeBar: false, responsive:true});
+}

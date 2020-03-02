@@ -2,44 +2,26 @@
 <html lang="en">
 <head>
     <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
-    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
 </head>
 
 <body>
     <div>
-        Period: <input type="text" name="daterange" value="Last 15 minutes">
+        <label for="period">Period:</label>
+        <select id="period" onchange="loadData()">
+            <option value="0.25" selected="selected">Last 15 minutes</option>
+            <option value="0.5">Last 30 minutes</option>
+            <option value="1">Last 1 hour</option>
+            <option value="4">Last 4 hours</option>
+            <option value="12">Last 12 hours</option>
+            <option value="24">Last 24 hours</option>
+            <option value="60">Last 7 days</option>
+        </select>
 
-        <div id="heatmap" style="width:45%;float:left"><!-- Plotly chart will be drawn inside this DIV --></div>
+        <div id="heatmap" style="width:55%;float:left"></div>
+        <div id="count" style="width:45%;float:right"></div>
         <script type="text/javascript" src="heatmap.js"></script>
-
-        
-        <div id="count" style="width:45%;float:right"><!-- Plotly chart will be drawn inside this DIV --></div>
         <script type="text/javascript" src="count.js"></script>
+        <script type="text/javascript" src="main.js"></script>
     </div>
-    <script>
-        $(function() {
-
-        function callback(start, end, label) {
-            $('input[name="daterange"]').val(label);
-        }
-        $('input[name="daterange"]').daterangepicker({
-            ranges: {
-                    'Last 15 minutes': [moment().subtract(15, 'minutes'), moment()],
-                    'Last 30 minutes': [moment().subtract(30, 'minutes'), moment()],
-                    'Last 1 hour': [moment().subtract(1, 'hours'), moment()],
-                    'Last 4 hours': [moment().subtract(4, 'hours'), moment()],
-                    'Last 12 hours': [moment().subtract(12, 'hours'), moment()],
-                    'Last 24 hours': [moment().subtract(24, 'hours'), moment()],
-                    'Last 7 days': [moment().subtract(7, 'days'), moment()],
-            },
-            showCustomRangeLabel:false,
-            autoUpdateInput:false
-          }, callback);
-        });
-    </script>
-    
 </body>
 </html>
